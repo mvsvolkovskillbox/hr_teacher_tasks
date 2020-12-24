@@ -1,0 +1,27 @@
+<form>
+    <div class="input-group mb-3">
+        <input type="text"
+               name="q"
+               class="form-control"
+               placeholder="Найти..."
+               value="{{ query.get('q') }}"
+        >
+        <div class="form-group-append">
+            <select id="inputState" class="form-control" name="items">
+                {% set limits = [10, 20, 50] %}
+                {% for limit in limits %}
+                    <option value="{{ limit }}" {% if query.get('items') == limit %} selected {% endif %}>{{ limit }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-outline-secondary"><i class="fa fa-search"></i></button>
+        </div>
+    </div>
+    <div class="form-group mb-6">
+        <div class="form-check">
+            <input id="deleted" type="checkbox" class="form-check-input" name="showDeleted" {% if query.has('showDeleted') %} checked {% endif %}>
+            <label class="form-check-label" for="deleted">Показать удаленные</label>
+        </div>
+    </div>
+</form>

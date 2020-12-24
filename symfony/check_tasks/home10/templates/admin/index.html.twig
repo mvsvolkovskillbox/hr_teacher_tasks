@@ -1,0 +1,22 @@
+{% extends 'base_content.html.twig' %}
+
+{% block title %}Админ-панель{% endblock %}
+
+{% block content %}
+
+<h1>Админ-панель</h1>
+
+<ul class="nav flex-column">
+    {% if is_granted('ROLE_ADMIN_COMMENT')%}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_admin_comments') }}">Управление комментариями</a>
+    </li>
+    {% endif %}
+    {% if is_granted('ROLE_ADMIN_TAG') %}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('app_admin_tags') }}">Управление тегами</a>
+    </li>
+    {% endif %}
+</ul>
+
+{% endblock %}
